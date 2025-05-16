@@ -7,15 +7,12 @@
     location="right"
     width="256"
     floating
-    sticky
   >
-    <template #prepend>
-      <AppHeadline
-        v-if="frontmatter?.toc?.length"
-        class="mt-4 mb-2 ms-4"
-        path="contents"
-      />
-    </template>
+    <AppHeadline
+      v-if="frontmatter?.toc?.length"
+      class="mt-4 mb-2 ms-4"
+      path="contents"
+    />
 
     <ul class="ms-5">
       <router-link
