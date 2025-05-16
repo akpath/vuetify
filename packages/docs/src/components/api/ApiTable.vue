@@ -17,7 +17,6 @@
       </thead>
 
       <tbody class="hover:bg-red">
-
           <template v-for="item in filtered" :key="item.name" >
             <v-hover>
               <template v-slot:default="{ isHovering, props }">
@@ -76,7 +75,6 @@
 
   const { t } = useI18n()
   const appStore = useAppStore()
-  const localeStore = useLocaleStore()
   const user = useUserStore()
 
   const filtered = computed(() => {
@@ -97,4 +95,6 @@
 .api-table
   :deep(.v-markdown p)
     margin-bottom: 0
+  :deep(.v-markdown a)
+    display: inline-block !important
 </style>
