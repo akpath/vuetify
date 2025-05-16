@@ -20,14 +20,27 @@
   const component = shallowRef<any>({})
 
   function generateToc () {
+
     const toc = []
     for (const section of sections) {
+
+      // If section exists and section is not empty
       if (section in component.value && Object.keys(component.value[section]).length) {
         toc.push({
           to: `#${section}`,
           text: section.charAt(0).toUpperCase() + section.slice(1),
           level: 2,
         })
+
+        const items = component.value[section];
+        for ( const name of Object.keys(items).sort()) {
+          toc.push({
+            to: `#${section}-${kebabCase(name)}`,
+            text: kebabCase(name),
+            level: 3
+          })
+        }
+
       }
     }
     return toc

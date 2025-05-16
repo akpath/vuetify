@@ -7,11 +7,11 @@
         </AppLink>
       </kbd>
 
-      <new-in-chip
+      <!-- <new-in-chip
         v-if="newIn"
         :text="t('new-in', { version: newIn })"
         :to="to"
-      />
+      /> -->
     </div>
   </td>
 </template>

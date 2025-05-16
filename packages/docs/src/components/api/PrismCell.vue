@@ -1,5 +1,5 @@
 <template>
-  <pre v-html="html" class="text-body-2" />
+  <pre v-html="html" class="text-mono"/>
 </template>
 
 <script setup lang="ts">
@@ -38,3 +38,8 @@
     return insertLinks(highlighted, stripped)
   }
 </script>
+
+<style scoped lang="sass">
+pre
+  font-size: 13px
+</style>

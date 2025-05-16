@@ -18,6 +18,7 @@ declare global {
   const cacheManifestEntries: typeof import('./src/utils/pwa')['cacheManifestEntries']
   const camelCase: typeof import('lodash-es')['camelCase']
   const camelize: typeof import('vue')['camelize']
+  const capitalize: typeof import('lodash-es')['capitalize']
   const cleanCache: typeof import('./src/utils/pwa')['cleanCache']
   const computed: typeof import('vue')['computed']
   const configureMarkdown: typeof import('./src/utils/markdown-it')['configureMarkdown']
@@ -205,6 +206,7 @@ declare module 'vue' {
     readonly cacheManifestEntries: UnwrapRef<typeof import('./src/utils/pwa')['cacheManifestEntries']>
     readonly camelCase: UnwrapRef<typeof import('lodash-es')['camelCase']>
     readonly camelize: UnwrapRef<typeof import('vue')['camelize']>
+    readonly capitalize: UnwrapRef<typeof import('lodash-es')['capitalize']>
     readonly cleanCache: UnwrapRef<typeof import('./src/utils/pwa')['cleanCache']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly configureMarkdown: UnwrapRef<typeof import('./src/utils/markdown-it')['configureMarkdown']>
