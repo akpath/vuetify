@@ -16,37 +16,36 @@
         </tr>
       </thead>
 
-      <tbody class="hover:bg-red">
-          <template v-for="item in filtered" :key="item.name" >
-            <v-hover>
-              <template v-slot:default="{ isHovering, props }">
-                <slot
-                  name="row"
-                  v-bind="{
-                    props: {
-                      ...props,
-                      style: isHovering && 'background: rgba(0,0,0,0.1)'
-                    },
-                    item
-                  }"
-                />
-              </template>
-            </v-hover>
+      <tbody>
+        <template v-for="item in filtered" :key="item.name">
+          <v-hover>
+            <template #default="{ isHovering, props: hoverProps }">
+              <slot
+                name="row"
+                v-bind="{
+                  props: {
+                    ...hoverProps,
+                    style: isHovering && 'background: rgba(0,0,0,0.1)'
+                  },
+                  item
+                }"
+              />
+            </template>
+          </v-hover>
 
+          <tr v-if="item.description || (user.dev && item.source)">
+            <td v-if="user.dev && item.source" class="text-mono pt-4" colspan="4">
+              <p v-if="user.dev && item.source">
+                <strong>source: {{ item.source }}</strong>
+                <template v-if="user.dev && item.descriptionSource && item.source !== item.descriptionSource">
+                  <br>
+                  <strong>description source: {{ item.descriptionSource }}</strong>
+                </template>
+              </p>
+            </td>
+          </tr>
 
-            <tr v-if="item.description || (user.dev && item.source)">
-              <td class="text-mono pt-4" colspan="4" v-if="user.dev && item.source">
-                <p v-if="user.dev && item.source">
-                  <strong>source: {{ item.source }}</strong>
-                  <template v-if="user.dev && item.descriptionSource && item.source !== item.descriptionSource">
-                    <br>
-                    <strong>description source: {{ item.descriptionSource }}</strong>
-                  </template>
-                </p>
-              </td>
-            </tr>
-
-          </template>
+        </template>
 
         <tr v-if="!filtered.length">
           <td class="text-center text-disabled text-body-2" colspan="4">

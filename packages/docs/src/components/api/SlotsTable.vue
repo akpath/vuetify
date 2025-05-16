@@ -15,14 +15,13 @@
       </tr>
 
       <tr v-if="item.formatted !== 'never' && item.text !== 'undefined'">
-        <td colspan="2" class="px-0">
+        <td class="px-0" colspan="2">
           <AppMarkup :code="item.formatted" :rounded="false" language="ts" />
         </td>
       </tr>
     </template>
   </ApiApiTable>
 </template>
-
 
 <script setup lang="ts">
   const localeStore = useLocaleStore()

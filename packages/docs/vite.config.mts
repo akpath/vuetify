@@ -105,7 +105,7 @@ export default defineConfig(({ command, mode, isSsrBuild }) => {
               'useSettingsStore',
               'useProductsStore',
             ],
-            'lodash-es': ['camelCase', 'kebabCase', 'upperFirst', 'capitalize'],
+            'lodash-es': ['camelCase', 'kebabCase', 'upperFirst'],
             vue: ['camelize', 'mergeProps'],
             vuetify: ['useDate', 'useDisplay', 'useGoTo', 'useRtl', 'useTheme'],
             'vue-i18n': ['useI18n'],

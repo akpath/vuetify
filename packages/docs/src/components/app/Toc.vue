@@ -8,11 +8,13 @@
     width="256"
     floating
   >
-    <AppHeadline
-      v-if="frontmatter?.toc?.length"
-      class="mt-4 mb-2 ms-4"
-      path="contents"
-    />
+    <template #prepend>
+      <AppHeadline
+        v-if="frontmatter?.toc?.length"
+        class="mt-4 mb-2 ms-4"
+        path="contents"
+      />
+    </template>
 
     <ul class="ms-5">
       <router-link

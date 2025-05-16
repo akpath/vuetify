@@ -131,8 +131,6 @@ export const frontmatterBuilder = createBuilder('frontmatterBuilder', 'metaExtra
       toc: generateToc(payload.md),
     }
 
-    console.log(payload.md, generateToc(payload.md))
-
     return payload
   })
   .meta()

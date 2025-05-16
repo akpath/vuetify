@@ -1,5 +1,5 @@
 <template>
-  <pre v-html="html" class="text-mono"/>
+  <pre class="text-mono" v-html="html" />
 </template>
 
 <script setup lang="ts">

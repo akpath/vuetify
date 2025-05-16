@@ -6,12 +6,6 @@
           {{ name }}
         </AppLink>
       </kbd>
-
-      <!-- <new-in-chip
-        v-if="newIn"
-        :text="t('new-in', { version: newIn })"
-        :to="to"
-      /> -->
     </div>
   </td>
 </template>
@@ -23,13 +17,8 @@
     newIn: String,
   })
 
-  const { t } = useI18n()
-
   const href = computed(() => {
     return `#${props.section}-${props.name.replace('$', '')}`
-  })
-  const to = computed(() => {
-    return rpath(`/getting-started/release-notes/?version=v${props.newIn}`)
   })
 </script>
 
