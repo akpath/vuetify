@@ -11,11 +11,21 @@
         <td>
           <ApiPrismCell :code="item.default" />
         </td>
+
+        <td>
+          <AppMarkdown
+            v-if="localeStore.locale !== 'eo-UY'"
+            :content="item.description"
+            class="mb-0"
+          />
+          <span v-else>{{ item.description }}</span>
+        </td>
       </tr>
     </template>
   </ApiApiTable>
 </template>
 
 <script setup lang="ts">
-  const headers = ['name', 'type', 'default']
+  const localeStore = useLocaleStore()
+  const headers = ['name', 'type', 'default', 'description']
 </script>

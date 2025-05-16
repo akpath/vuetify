@@ -16,39 +16,38 @@
         </tr>
       </thead>
 
-      <tbody>
-        <template v-for="item in filtered" :key="item.name">
-          <slot
-            name="row"
-            v-bind="{
-              props: {
-                style: 'background: rgba(0,0,0,.1)'
-              },
-              item,
-            }"
-          />
+      <tbody class="hover:bg-red">
 
-          <tr v-if="item.description || (user.dev && item.source)">
-            <td class="text-mono pt-4" colspan="3">
-              <template v-if="item.description">
-                <AppMarkdown
-                  v-if="localeStore.locale !== 'eo-UY'"
-                  :content="item.description"
-                  class="mb-0"
+          <template v-for="item in filtered" :key="item.name" >
+            <v-hover>
+              <template v-slot:default="{ isHovering, props }">
+                <slot
+                  name="row"
+                  v-bind="{
+                    props: {
+                      ...props,
+                      style: isHovering && 'background: rgba(0,0,0,0.1)'
+                    },
+                    item
+                  }"
                 />
-                <span v-else>{{ item.description }}</span>
               </template>
+            </v-hover>
 
-              <p v-if="user.dev && item.source">
-                <strong>source: {{ item.source }}</strong>
-                <template v-if="user.dev && item.descriptionSource && item.source !== item.descriptionSource">
-                  <br>
-                  <strong>description source: {{ item.descriptionSource }}</strong>
-                </template>
-              </p>
-            </td>
-          </tr>
-        </template>
+
+            <tr v-if="item.description || (user.dev && item.source)">
+              <td class="text-mono pt-4" colspan="4" v-if="user.dev && item.source">
+                <p v-if="user.dev && item.source">
+                  <strong>source: {{ item.source }}</strong>
+                  <template v-if="user.dev && item.descriptionSource && item.source !== item.descriptionSource">
+                    <br>
+                    <strong>description source: {{ item.descriptionSource }}</strong>
+                  </template>
+                </p>
+              </td>
+            </tr>
+
+          </template>
 
         <tr v-if="!filtered.length">
           <td class="text-center text-disabled text-body-2" colspan="4">
@@ -93,3 +92,9 @@
     })
   })
 </script>
+
+<style scoped lang="sass">
+.api-table
+  :deep(.v-markdown p)
+    margin-bottom: 0
+</style>

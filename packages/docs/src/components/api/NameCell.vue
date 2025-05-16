@@ -1,8 +1,8 @@
 <template>
   <td :id="`${section}-${name.replace('$', '')}`">
     <div class="d-inline-flex align-center">
-      <kbd class="name-item text-mono">
-        <AppLink :href="href" class="font-weight-bold">
+      <kbd class="name-item">
+        <AppLink :href="href" class="font-weight-bold text-body-2">
           {{ name }}
         </AppLink>
       </kbd>
